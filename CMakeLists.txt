@@ -51,3 +51,4 @@ endif()
 
 add_subdirectory(src/quickcheat)
 add_subdirectory(src/quickstart)
+add_subdirectory(src/musify)
