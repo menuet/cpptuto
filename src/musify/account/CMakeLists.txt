@@ -1,10 +1,8 @@
 
 add_executable(musify-account
     main.cpp
-    input_output.cpp
-    input_output.hpp
     accounts.cpp
     accounts.hpp
     )
 
-target_link_libraries(musify-account PRIVATE fmt::fmt)
+target_link_libraries(musify-account PRIVATE fmt::fmt musify-holdall)
