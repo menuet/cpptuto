@@ -1,0 +1,5 @@
+
+out/
+.vs/
+!.vs/launch.vs.json
+scripts/vagrant/.vagrant/
