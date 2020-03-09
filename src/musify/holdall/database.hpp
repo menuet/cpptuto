@@ -49,10 +49,18 @@ namespace musify { namespace database {
         FileNotReadable,
         UnknownLineType,
         IncompleteLine,
+        DuplicateArtist,
+        UnknownArtist,
     };
 
     LoadingResult load_database(const std::filesystem::path& database_file_path, Database& database);
 
     void display_database(const Database& database);
+
+    bool contains_artist(const Database& database, const std::string& artist_name);
+
+    const Artist* find_artist(const Database& database, const std::string& artist_name);
+
+    void display_artist(const Artist& artist);
 
 }} // namespace musify::database

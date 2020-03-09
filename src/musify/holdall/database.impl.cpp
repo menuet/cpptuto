@@ -71,6 +71,8 @@ namespace musify { namespace database {
         const auto [name, year_rating_genre] = parse_until(name_year_rating_genre, ',');
         if (name.empty())
             return LoadingResult::IncompleteLine;
+        if (contains_artist(database, name))
+            return LoadingResult::DuplicateArtist;
         const auto [year, rating_genre] = parse_until(year_rating_genre, ',');
         if (year.empty())
             return LoadingResult::IncompleteLine;
@@ -94,6 +96,8 @@ namespace musify { namespace database {
         const auto [artistname, date] = parse_until(artistname_date, ',');
         if (artistname.empty() || date.empty())
             return LoadingResult::IncompleteLine;
+        if (!contains_artist(database, artistname))
+            return LoadingResult::UnknownArtist;
         Album album{};
         album.name = name;
         album.artist_name = artistname;

@@ -35,11 +35,24 @@ int main(int argc, char* argv[])
     case mdb::LoadingResult::IncompleteLine:
         std::cerr << "The database file contains an incomplete line\n";
         break;
+    case mdb::LoadingResult::DuplicateArtist:
+        std::cerr << "The database file contains a duplicate artist\n";
+        break;
+    case mdb::LoadingResult::UnknownArtist:
+        std::cerr << "The database file refers to an unknown artist\n";
+        break;
     case mdb::LoadingResult::Ok:
         std::cout << "Database file's contents:\n";
         mdb::display_database(database);
         break;
     }
+
+    std::cout << "Searching for artist 'Oasis'...\n";
+    const mdb::Artist* oasis = mdb::find_artist(database, "Oasis");
+    if (oasis)
+        mdb::display_artist(*oasis);
+    else
+        std::cout << "Unknown artist\n";
 
     return static_cast<int>(result);
 }
