@@ -46,4 +46,24 @@ namespace musify { namespace database {
         display_music_entities(std::cout, "Song", database.songs);
     }
 
+    bool contains_artist(const Database& database, const std::string& artist_name)
+    {
+        return find_artist(database, artist_name) != nullptr;
+    }
+
+    const Artist* find_artist(const Database& database, const std::string& artist_name)
+    {
+        for (const Artist& artist : database.artists)
+        {
+            if (artist.name == artist_name)
+                return &artist;
+        }
+        return nullptr;
+    }
+
+    void display_artist(const Artist& artist)
+    {
+        std::cout << "Artist: " << artist << "\n";
+    }
+
 }} // namespace musify::database
