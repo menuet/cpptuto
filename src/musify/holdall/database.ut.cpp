@@ -108,35 +108,9 @@ namespace musify { namespace database {
 
         // ASSERT
         REQUIRE(result == LoadingResult::Ok);
-
-        // Does not compile yet:
-        // REQUIRE(database.artists == std::vector<Artist>{{"Artist1", "2001", "4.5", "Rock"}});
-
-        REQUIRE(database.artists.size() == 1);
-        const Artist& artist = database.artists[0];
-        REQUIRE(artist.name == "Artist1");
-        REQUIRE(artist.start_year == "2001");
-        REQUIRE(artist.rating == "4.5");
-        REQUIRE(artist.genre == "Rock");
-
-        // Does not compile yet:
-        // REQUIRE(database.albums == std::vector<Album>{{"Album1", "Artist1", "2020/03/09"}});
-
-        REQUIRE(database.albums.size() == 1);
-        const Album& album = database.albums[0];
-        REQUIRE(album.name == "Album1");
-        REQUIRE(album.artist_name == "Artist1");
-        REQUIRE(album.date == "2020/03/09");
-
-        // Does not compile yet:
-        // REQUIRE(database.songs == std::vector<Song>{{"Song1", "Album1", "Artist1", "3:45"}});
-
-        REQUIRE(database.songs.size() == 1);
-        const Song& song = database.songs[0];
-        REQUIRE(song.name == "Song1");
-        REQUIRE(song.album_name == "Album1");
-        REQUIRE(song.artist_name == "Artist1");
-        REQUIRE(song.duration == "3:45");
+        REQUIRE(database.artists == std::vector<Artist>{{"Artist1", "2001", "4.5", "Rock"}});
+        REQUIRE(database.albums == std::vector<Album>{{"Album1", "Artist1", "2020/03/09"}});
+        REQUIRE(database.songs == std::vector<Song>{{"Song1", "Album1", "Artist1", "3:45"}});
     }
 
     TEST_CASE("TEST musify::database::display_music_entities with strings", "[database]")
